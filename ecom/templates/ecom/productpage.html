@@ -1,0 +1,124 @@
+{% extends 'ecom/base.html' %}
+{% block content %}
+
+
+  <!--Main layout-->
+  <main class="mt-5 pt-4" >
+    <div class="container text-white mt-5">
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+        {%for i in product%}
+          <img src="{{i.image}}" class="img-fluid" alt="">
+        {%endfor%}
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Content-->
+          <div class="p-4">
+
+            <div class="mb-3">
+              <a href="">
+                <span class="badge purple mr-1">Category 2</span>
+              </a>
+              <a href="">
+                <span class="badge blue mr-1">New</span>
+              </a>
+              <a href="">
+                <span class="badge red mr-1">Bestseller</span>
+              </a>
+            </div>
+            {% if quantity %}
+            <div class="alert alert-warning d-flex align-items-center" role="alert">
+              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+              <div>
+                {{quantity}} has successfully added to cart.
+              </div>
+            </div>
+            
+            {% endif %}
+            {% if error %}
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+              <div>
+                invalid entry
+              </div>
+            </div>
+            {% endif %}
+
+            <p class="lead">
+              <span class="mr-1">
+                {%for i in product%}
+                
+                <h3><i><del>{{i.orginal_price}}</del></i></h3>
+              </span>
+              <h3>special price:<span>{{i.selling_price}}</span></h3>
+              
+            </p>
+
+
+            <p class="lead font-weight-bold">Description</p>
+
+            <p>{{i.description}}</p>
+            {% endfor %}
+
+              <form method='post' action="{%url 'add_to_cart'%}">
+                {% csrf_token %}
+              <!-- Default input -->
+              {% for i in product   %}
+              <input type="hidden" value={{i.id}} name="product_id"/>
+              {% endfor %}
+              <label class="form-label" for="form1">Quantity</label>
+              
+              <input type="number" value="1" min="0" class="form-control " name="quantity" style="width: 100px" placeholder=" quantity" />
+                <br>
+              
+              <button class="btn btn-outline-dark btn-lg px-5" type="submit" >ADD TO CART</button>
+
+            </form>
+
+          </div>
+          <!--Content-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <hr>
+
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 text-center">
+
+          <h4 class="my-4 h4">Additional information</h4>
+
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
+            voluptates,
+            quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <!--Grid row-->
+      
+      
+
+    </div>
+  </main>
+  <!--Main layout-->
+>
+  {% endblock content %}

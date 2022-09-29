@@ -1,0 +1,43 @@
+{% extends 'ecom/base.html' %}
+{% block content %}
+
+<section >
+  <div class="text-center container py-5">
+    <h2 class="mt-4 mb-5" class="text-white"><strong>Collections</strong></h2>
+
+    <div class="row">
+      {%for i in collection%}
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card">
+          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light "
+            data-mdb-ripple-color="light" >
+            <img src="{{i.image}}"
+              class="w-100" class="img-responsive"/>
+            <a href="?collections={{i.id}}">
+              
+              <div class="hover-overlay">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </div>
+            </a>
+          </div>
+          <div class="card-body">
+            <a href="?collections={{i.id}}" class="btn btn-secondary flex-fill ms-1">
+              <h5 class="card-title mb-3">{{i.name}}</h5>
+            </a>
+            
+            
+          </div>
+        </div>
+      </div>
+      {%endfor%}
+
+    </div>
+
+    
+
+  </div>
+</section>
+   
+
+{% endblock content %}
+

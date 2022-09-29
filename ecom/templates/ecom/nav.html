@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><strong>ECOM</strong></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      
+      
+          <!-- Left links -->
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <div class="navbar-nav">
+                  <a class="btn btn-dark btn-rounded me-3" class="nav-link active" aria-current="page" href="{%url 'index'%}">Home</a>
+                  {% if not request.session.user_id %}
+                  <a class="btn btn-light btn-rounded me-3" class="nav-link active" aria-current="page" href="{%url 'login'%}">login</a>
+                  {% else %}
+                  <a class="btn btn-secondary btn-rounded me-3" class="nav-link active" aria-current="page" href="{%url 'logout'%}">logout</a>
+
+                  {% endif %}
+                  <a class="nav-link" href="{%url 'collections'%}" style="color:#fff">collections</a>
+                  <a class="nav-link" href="{%url 'cart'%}" style="color:#fff">
+                      <span><i class="fas fa-shopping-cart"></i></span>
+                      cart
+                    </a>
+                  <a class="nav-link" href="{%url 'checkout'%}"style="color:#fff">
+                      <span><i class="fas fa-shopping-basket"></i></span>
+                      Orders</a>
+                  
+                </div>
+              
+            
+           
+          </ul>
+          <!-- Left links -->
+        
+    
+    </div>
+  </div>
+</nav>
